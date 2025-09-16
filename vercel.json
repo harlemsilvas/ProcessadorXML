@@ -1,12 +1,5 @@
 {
   "version": 2,
-  "name": "processador-xml-landing",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
