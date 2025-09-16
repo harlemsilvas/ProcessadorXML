@@ -1,0 +1,44 @@
+{
+  "name": "processador-xml-landing",
+  "version": "1.0.0",
+  "description": "Landing page profissional para o ProcessadorXML - Software freemium de processamento XML e criação de pacotes ZIP",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8080",
+    "build": "echo 'Static site - no build process needed'",
+    "start": "python -m http.server 8080",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "xml-processor",
+    "zip-creator",
+    "landing-page",
+    "freemium-software",
+    "html5",
+    "css3",
+    "javascript",
+    "responsive"
+  ],
+  "author": {
+    "name": "Harlem Silva",
+    "email": "harlem@example.com",
+    "url": "https://github.com/harlemsilvas"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harlemsilvas/processador-xml-zip.git"
+  },
+  "homepage": "https://processador-xml-zip.vercel.app",
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

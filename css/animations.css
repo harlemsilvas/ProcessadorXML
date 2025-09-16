@@ -1,0 +1,328 @@
+/* Estilos CSS adicionais para funcionalidades JavaScript */
+
+/* Scroll Top Button */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.scroll-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Loading animations */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Aplicar animações aos elementos */
+.feature-card,
+.pricing-card,
+.testimonial-card,
+.benefit-item {
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.feature-card.loading {
+    opacity: 1;
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.pricing-card.loading {
+    opacity: 1;
+    animation: fadeInScale 0.6s ease forwards;
+}
+
+.testimonial-card.loading {
+    opacity: 1;
+    animation: slideInLeft 0.6s ease forwards;
+}
+
+.benefit-item.loading {
+    opacity: 1;
+    animation: slideInRight 0.6s ease forwards;
+}
+
+/* Delay sequential para cards */
+.feature-card:nth-child(2).loading {
+    animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3).loading {
+    animation-delay: 0.4s;
+}
+
+.pricing-card:nth-child(2).loading {
+    animation-delay: 0.3s;
+}
+
+.pricing-card:nth-child(3).loading {
+    animation-delay: 0.6s;
+}
+
+/* Navbar scrolled state */
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled .navbar-brand {
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* Formulário - Estados de validação aprimorados */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control:focus.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: #dc3545;
+}
+
+/* Loading state para botão */
+.btn[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Animação para alertas de sucesso */
+.alert {
+    animation: slideInDown 0.5s ease;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Progress bars animadas */
+.progress-bar {
+    width: 0%;
+    transition: width 2s ease;
+}
+
+/* Lazy loading para imagens */
+img.lazy {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img:not(.lazy) {
+    opacity: 1;
+}
+
+/* Dark mode detection */
+@media (prefers-color-scheme: dark) {
+    .dark-mode-preferred .hero-section {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    
+    .dark-mode-preferred .card {
+        background-color: #2d3748;
+        color: #e2e8f0;
+    }
+}
+
+/* Bounce animation para easter egg */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    40% {
+        transform: translate(-50%, -50%) translateY(-20px);
+    }
+    60% {
+        transform: translate(-50%, -50%) translateY(-10px);
+    }
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Focus states aprimorados */
+.btn:focus-visible,
+.form-control:focus-visible,
+.scroll-top:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Smooth scrolling mais suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Otimizações de performance */
+.feature-card,
+.pricing-card,
+.testimonial-card {
+    will-change: transform, opacity;
+}
+
+/* Estados de hover aprimorados */
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card:hover {
+    transform: scale(1.02);
+}
+
+/* Loading spinner customizado */
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-spinner {
+    animation: spinner 1s linear infinite;
+}
+
+/* Estilo para contador animado */
+.stat-card h3 {
+    font-variant-numeric: tabular-nums;
+    transition: all 0.3s ease;
+}
+
+/* Media queries para animações responsivas */
+@media (max-width: 768px) {
+    .feature-card.loading,
+    .pricing-card.loading,
+    .testimonial-card.loading {
+        animation-duration: 0.4s;
+    }
+    
+    .scroll-top {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Alto contraste para melhor acessibilidade */
+@media (prefers-contrast: high) {
+    .btn-primary {
+        border: 2px solid #000;
+    }
+    
+    .card {
+        border: 2px solid #000;
+    }
+}
+
+/* Otimização para impressão */
+@media print {
+    .navbar,
+    .scroll-top,
+    .btn,
+    #contact {
+        display: none !important;
+    }
+    
+    .hero-section {
+        page-break-after: always;
+    }
+}
+
+/* Performance hint para animações */
+.feature-card,
+.pricing-card,
+.testimonial-card,
+.scroll-top {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
