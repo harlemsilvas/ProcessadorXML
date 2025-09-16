@@ -37,6 +37,7 @@ landpage-xml/
 ## ✨ Funcionalidades
 
 ### Design e UX
+
 - Hero section impactante com call-to-action
 - Seção de recursos e benefícios
 - Planos de preços claros (Freemium/Premium)
@@ -44,6 +45,7 @@ landpage-xml/
 - Formulário de contato funcional
 
 ### JavaScript Interativo
+
 - Smooth scrolling entre seções
 - Validação de formulário em tempo real
 - Animações de scroll reveal
@@ -52,6 +54,7 @@ landpage-xml/
 - Easter egg (Konami Code)
 
 ### Otimizações
+
 - Lazy loading para imagens
 - Detecção de preferências do sistema
 - Monitoramento de performance
@@ -61,17 +64,19 @@ landpage-xml/
 ## 🎨 Personalização
 
 ### Cores Principais
+
 ```css
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --success-color: #28a745;
-    --warning-color: #ffc107;
-    --danger-color: #dc3545;
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
 }
 ```
 
 ### Fontes
+
 - **Cabeçalhos**: Poppins (Google Fonts)
 - **Corpo**: System fonts stack para performance
 
@@ -87,13 +92,14 @@ landpage-xml/
 1. **Clone ou baixe os arquivos**
 2. **Abra index.html** em um navegador moderno
 3. **Para desenvolvimento**, use um servidor local:
+
    ```bash
    # Python 3
    python -m http.server 8000
-   
+
    # Node.js
    npx serve .
-   
+
    # PHP
    php -S localhost:8000
    ```
@@ -101,12 +107,14 @@ landpage-xml/
 ## 🚀 Deploy
 
 ### Hosting Estático
+
 - **Vercel**: Deploy automático via Git
 - **Netlify**: Arrastar e soltar ou Git
 - **GitHub Pages**: Hosting gratuito para repositórios
 - **AWS S3**: Hosting escalável
 
 ### CDN e Performance
+
 - Minificação de CSS/JS
 - Compressão de imagens
 - Configuração de cache headers
@@ -115,6 +123,7 @@ landpage-xml/
 ## 📊 Analytics e Tracking
 
 O projeto inclui estrutura para integração com:
+
 - Google Analytics 4
 - Facebook Pixel
 - Hotjar/FullStory
@@ -131,12 +140,14 @@ O projeto inclui estrutura para integração com:
 ## 🎯 Conversão
 
 ### Call-to-Actions
+
 - Botões de download prominent
 - Formulário de trial/demo
 - Links para contato direto
 - Prova social e depoimentos
 
 ### A/B Testing
+
 - Estrutura preparada para testes
 - Event tracking configurado
 - Métricas de conversão
@@ -144,6 +155,7 @@ O projeto inclui estrutura para integração com:
 ## 📧 Integração Backend
 
 Para formulário de contato funcional, integre com:
+
 - **Formspree**: Serviço simples de formulários
 - **EmailJS**: Envio via JavaScript
 - **API própria**: Node.js/PHP/Python
@@ -164,6 +176,7 @@ Este projeto é de uso livre para fins educacionais e comerciais.
 ## 👨‍💻 Autor
 
 **Harlem Silva**
+
 - Desenvolvedor Full Stack
 - Especialista em soluções web e desktop
 

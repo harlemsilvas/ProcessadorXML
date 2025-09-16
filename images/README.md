@@ -4,23 +4,26 @@ Esta pasta contém as imagens da landing page:
 
 - **app-mockup.png**: Mockup do aplicativo ProcessadorXML
 - **cliente1.jpg**: Foto do primeiro cliente/depoimento
-- **cliente2.jpg**: Foto do segundo cliente/depoimento  
+- **cliente2.jpg**: Foto do segundo cliente/depoimento
 - **cliente3.jpg**: Foto do terceiro cliente/depoimento
 - **favicon.ico**: Ícone do site
 
 ## Imagens Recomendadas:
 
 ### App Mockup
+
 - **Tamanho**: 600x400px
 - **Formato**: PNG com transparência
 - **Conteúdo**: Screenshot ou mockup da interface do ProcessadorXML
 
 ### Fotos de Clientes
+
 - **Tamanho**: 150x150px (círcular)
 - **Formato**: JPG otimizado
 - **Conteúdo**: Fotos profissionais ou avatars
 
 ### Favicon
+
 - **Tamanho**: 32x32px, 16x16px
 - **Formato**: ICO
 - **Conteúdo**: Logo simplificado da marca
