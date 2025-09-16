@@ -17,8 +17,18 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <title>Processador XML/ZIP - Automatização Profissional</title>
@@ -40,6 +50,76 @@
     />
 
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Custom CSS adicional (animações) -->
+    <link rel="stylesheet" href="css/animations.css" />
+
+    <!-- SEO extras -->
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0d6efd" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Processador XML/ZIP - Automatização Profissional"
+    />
+    <meta
+      property="og:description"
+      content="Automatize o processamento de arquivos XML por CNPJ, crie ZIPs e envie por email. Planos Freemium e Profissional."
+    />
+    <meta property="og:url" content="https://processador-xml-zip.vercel.app/" />
+    <meta
+      property="og:image"
+      content="https://processador-xml-zip.vercel.app/images/app-mockup.png"
+    />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Processador XML/ZIP - Automatização Profissional"
+    />
+    <meta
+      name="twitter:description"
+      content="Automatize o processamento de arquivos XML por CNPJ, crie ZIPs e envie por email. Planos Freemium e Profissional."
+    />
+    <meta
+      name="twitter:image"
+      content="https://processador-xml-zip.vercel.app/images/app-mockup.png"
+    />
+
+    <!-- Google Analytics 4 -->
+    <!-- Substitua G-XXXXXXXXXX pelo seu Measurement ID do GA4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-6K7JQWQK9Q"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-6K7JQWQK9Q");
+    </script>
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ProcessadorXML",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "description": "Automatize o processamento de arquivos XML por CNPJ, com compactação e envio por email.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "BRL",
+          "price": "97.00"
+        }
+      }
+    </script>
   </head>
   <body>
     <!-- Navigation -->
@@ -518,11 +598,23 @@
         </div>
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <form id="contactForm" class="contact-form">
+            <form
+              id="contactForm"
+              class="contact-form"
+              action="https://formspree.io/f/mwkzqvbp"
+              method="POST"
+              novalidate
+            >
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="nome" class="form-label">Nome *</label>
-                  <input type="text" class="form-control" id="nome" required />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nome"
+                    name="nome"
+                    required
+                  />
                 </div>
                 <div class="col-md-6">
                   <label for="email" class="form-label">Email *</label>
@@ -530,22 +622,33 @@
                     type="email"
                     class="form-control"
                     id="email"
+                    name="email"
                     required
                   />
                 </div>
                 <div class="col-md-6">
                   <label for="telefone" class="form-label">Telefone</label>
-                  <input type="tel" class="form-control" id="telefone" />
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="telefone"
+                    name="telefone"
+                  />
                 </div>
                 <div class="col-md-6">
                   <label for="empresa" class="form-label">Empresa</label>
-                  <input type="text" class="form-control" id="empresa" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="empresa"
+                    name="empresa"
+                  />
                 </div>
                 <div class="col-12">
                   <label for="plano" class="form-label"
                     >Plano de Interesse</label
                   >
-                  <select class="form-select" id="plano">
+                  <select class="form-select" id="plano" name="plano">
                     <option value="">Selecione um plano</option>
                     <option value="gratuito">Gratuito</option>
                     <option value="profissional">Profissional (R$ 97)</option>
@@ -557,10 +660,32 @@
                   <textarea
                     class="form-control"
                     id="mensagem"
+                    name="mensagem"
                     rows="4"
                     placeholder="Conte-nos sobre suas necessidades..."
                   ></textarea>
                 </div>
+                <!-- Honeypot anti-spam -->
+                <div class="d-none" aria-hidden="true">
+                  <label for="_gotcha" class="form-label"
+                    >Não preencha se você for humano</label
+                  >
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    id="_gotcha"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+                <!-- Redirect opcional após sucesso -->
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="Novo contato - ProcessadorXML"
+                />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value="/obrigado.html" />
                 <div class="col-12 text-center">
                   <button type="submit" class="btn btn-primary btn-lg px-5">
                     <i class="fas fa-paper-plane me-2"></i>Enviar Mensagem
@@ -658,12 +783,7 @@
     <!-- Font Awesome JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
-    <!-- Custom CSS adicional -->
-    <link rel="stylesheet" href="css/animations.css" />
-
     <!-- Custom JavaScript -->
-    <script src="js/script.js"></script>
-    <!-- Custom JS -->
     <script src="js/script.js"></script>
   </body>
 </html>

@@ -205,6 +205,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = new FormData(contactForm);
     const data = Object.fromEntries(formData.entries());
 
+    // Honeypot simples
+    if (data._gotcha) {
+      console.warn("Spam detectado pelo honeypot.");
+      return;
+    }
+
     // Mostrar loading no botão
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
@@ -212,19 +218,42 @@ document.addEventListener("DOMContentLoaded", function () {
       '<i class="fas fa-spinner fa-spin me-2"></i>Enviando...';
     submitBtn.disabled = true;
 
-    // Simular envio (aqui você integraria com seu backend)
-    setTimeout(() => {
-      // Sucesso
-      showSuccessMessage();
-      contactForm.reset();
-
-      // Restaurar botão
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-
-      // Log dos dados (remover em produção)
-      console.log("Dados do formulário:", data);
-    }, 2000);
+    // Enviar ao Formspree
+    fetch(contactForm.action, {
+      method: contactForm.method || "POST",
+      headers: { Accept: "application/json" },
+      body: formData,
+    })
+      .then(async (response) => {
+        if (response.ok) {
+          showSuccessMessage();
+          contactForm.reset();
+          trackEvent("contact_submit_success", { source: "form" });
+        } else {
+          const contentType = response.headers.get("content-type") || "";
+          let errorMsg =
+            "Não foi possível enviar sua mensagem. Tente novamente.";
+          if (contentType.includes("application/json")) {
+            const data = await response.json().catch(() => ({}));
+            if (data && data.errors && data.errors.length > 0) {
+              errorMsg = data.errors.map((e) => e.message).join(", ");
+            }
+          }
+          showErrorMessage(errorMsg);
+          trackEvent("contact_submit_error", { status: response.status });
+        }
+      })
+      .catch((err) => {
+        console.error("Erro ao enviar formulário:", err);
+        showErrorMessage(
+          "Ocorreu um erro de rede. Verifique sua conexão e tente novamente."
+        );
+        trackEvent("contact_submit_exception", { message: String(err) });
+      })
+      .finally(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      });
   }
 
   function showSuccessMessage() {
@@ -248,6 +277,25 @@ document.addEventListener("DOMContentLoaded", function () {
         successAlert.remove();
       }
     }, 5000);
+  }
+
+  function showErrorMessage(message) {
+    const errorAlert = document.createElement("div");
+    errorAlert.className =
+      "alert alert-danger alert-dismissible fade show mt-4";
+    errorAlert.innerHTML = `
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Ops!</strong> ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+
+    contactForm.parentNode.insertBefore(errorAlert, contactForm);
+
+    setTimeout(() => {
+      if (errorAlert.parentNode) {
+        errorAlert.remove();
+      }
+    }, 7000);
   }
 
   // Inicializar animações CSS personalizadas
